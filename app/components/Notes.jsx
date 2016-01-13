@@ -7,14 +7,15 @@ Component{
     const notes= this.props.items;
     return(
       <ul className="notes">
-        {notes.map(this.renderNote)}
+        {notes.map(this.renderNote,this)}
       </ul>
     );
   }
   renderNote (note){
     return (
-      <li key={note.id}>
-        <Note task={note.task}/>
+      <li className="note" key={note.id}>
+        <Note task={note.task} onEdit={this.props.onEdit.bind(null, note.id)}
+          onDelete={this.props.onDelete.bind(null, note.id)}/>
       </li>
     );
   }
